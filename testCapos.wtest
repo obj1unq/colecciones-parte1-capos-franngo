@@ -1,1 +1,49 @@
-r
+import capos.*
+
+describe "Rolando" {
+
+    test "Rolando encuentra cosas" {
+        rolando.encontrar(espada)
+        rolando.encontrar(libro)
+        rolando.encontrar(collar)
+        //assert.equals(rolando.mochila.size(), 2)
+        //assert.equals(rolando.mochila, [espada, libro]) //lista
+        assert.equals(rolando.mochila, #{espada, libro}) //conjunto. usamos conjunto porque no hay requerimiento de orden.
+    }
+
+    test "ir al hogar" {
+        rolando.encontrar(espada)
+        rolando.encontrar(libro)
+        rolando.irAHogar()
+        //rolando.LlegarACastillo()
+        assert.equals(rolando.mochila().size(), 0)
+        //assert.notThat(rolando.tieneArtefactos()) //método que te dice si la mochila de rolando tiene artefactos
+        //assert.that(rolando.mochila.isEmpty())
+        assert.equals(#{espada, libro}, castillo.cofre())
+        rolando.encontrar(collar)
+        rolando.irAHogar()
+        assert.equals(rolando.mochila().size(), 0)
+    }
+
+    test "posesiones" {
+        castillo.almacenar(#{espada, collar})
+        rolando.encontrar(armadura)
+        assert.equals(rolando.posesiones(), #{espada, collar, armadura})
+        assert.notThat(rolando.posee(libro))
+        assert.that(rolando.posee(espada))
+        assert.that(rolando.posee(armadura))
+        assert.that(rolando.posee(collar))
+    }
+
+    test "historial" {
+        rolando.encontrar(espada)
+        rolando.encontrar(libro)
+        rolando.encontrar(collar)
+        rolando.irAHogar()
+        rolando.encontrar(armadura) //este es el índice 3
+        rolando.encontrar(collar)
+        assert.equals(rolando.historial(), [espada,libro,collar,armadura,collar])
+        assert.equals(rolando.artefactoEnHistorial(3), armadura)
+    }
+
+}
