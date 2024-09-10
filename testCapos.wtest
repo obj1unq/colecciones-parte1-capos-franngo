@@ -8,7 +8,7 @@ describe "Rolando" {
         rolando.encontrar(collar)
         //assert.equals(rolando.mochila.size(), 2)
         //assert.equals(rolando.mochila, [espada, libro]) //lista
-        assert.equals(rolando.mochila, #{espada, libro}) //conjunto. usamos conjunto porque no hay requerimiento de orden.
+        assert.equals(rolando.mochila(), #{espada, libro}) //conjunto. usamos conjunto porque no hay requerimiento de orden.
     }
 
     test "ir al hogar" {
